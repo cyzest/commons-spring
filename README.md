@@ -11,7 +11,7 @@ JPA 2.1 이상 (Hibernate 4.3 이상)
 ~~~ xml
 <dependencies>
     <dependency>
-        <groupId>com.cyzest</groupId>
+        <groupId>io.github.cyzest</groupId>
         <artifactId>commons-spring</artifactId>
         <version>1.0.0</version>
     </dependency>
