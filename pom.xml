@@ -22,7 +22,7 @@
 
     <scm>
         <url>https://github.com/cyzest/commons-spring</url>
-        <connection>scm:git:ssh://github.com/cyzest/commons-spring.git</connection>
+        <connection>scm:git:git://github.com/cyzest/commons-spring.git</connection>
         <developerConnection>scm:git:git@github.com:cyzest/commons-spring.git</developerConnection>
     </scm>
 
