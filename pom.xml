@@ -193,10 +193,4 @@
         </repository>
     </distributionManagement>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
 </project>
