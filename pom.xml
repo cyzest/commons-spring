@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.cyzest</groupId>
     <artifactId>commons-spring</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Cyzest Commons Spring</name>
@@ -21,8 +19,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/cyzest/commons-spring</url>
-        <connection>https://github.com/cyzest/commons-spring.git</connection>
+        <url>https://github.com/cyzest/commons-spring/tags/commons-spring-1.0.0</url>
+        <connection>https://github.com/cyzest/commons-spring.git/tags/commons-spring-1.0.0</connection>
     </scm>
 
     <developers>
@@ -189,8 +187,14 @@
         <repository>
             <id>nexus-releases</id>
             <name>Nexus Release Repository</name>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
 
 </project>
