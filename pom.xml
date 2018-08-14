@@ -19,8 +19,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/cyzest/commons-spring/tags/commons-spring-1.0.0</url>
-        <connection>https://github.com/cyzest/commons-spring.git/tags/commons-spring-1.0.0</connection>
+        <url>https://github.com/cyzest/commons-spring</url>
+        <connection>https://github.com/cyzest/commons-spring.git</connection>
     </scm>
 
     <developers>
