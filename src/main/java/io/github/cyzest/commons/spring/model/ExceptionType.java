@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 /**
  * 익셉션 타입 인터페이스
  */
-public interface ExceptionTypeable {
+public interface ExceptionType {
 
     int getResultCode();
     String getResultMessage();

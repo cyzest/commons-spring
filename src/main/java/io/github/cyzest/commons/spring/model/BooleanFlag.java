@@ -3,21 +3,21 @@ package io.github.cyzest.commons.spring.model;
 import java.io.Serializable;
 
 /**
- * Boolean Flag 상수
+ * Boolean Flag
  */
-public enum BooleanFlag implements EnumTypeable, Serializable {
+public enum BooleanFlag implements EnumCode, Serializable {
 
 	YES("Y"),
 	NO("N");
 
-	private String type;
+	private String code;
 
-	private BooleanFlag(String type) {
-		this.type = type;
+	private BooleanFlag(String code) {
+		this.code = code;
 	}
 
-	public String getType() {
-			return type;
+	public String getCode() {
+			return code;
 		}
 
 }

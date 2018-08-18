@@ -14,9 +14,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * EnumTypeAnnotationProcessor
+ * EnumCode Annotation Processor
  */
-public class EnumTypeAnnotationProcessor extends AbstractProcessor {
+public class EnumCodeAnnotationProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -26,10 +26,10 @@ public class EnumTypeAnnotationProcessor extends AbstractProcessor {
         }
 
         for (TypeElement typeElement : annotations) {
-            if (typeElement.toString().equals(JpaEnumTypeConverter.class.getName())) {
-                generateEnumTypeConverter(roundEnv, typeElement);
-            } else if (typeElement.toString().equals(MybatisEnumTypeHandler.class.getName())) {
-                generateEnumTypeHandler(roundEnv, typeElement);
+            if (typeElement.toString().equals(JpaEnumCodeConverter.class.getName())) {
+                generateEnumCodeConverter(roundEnv, typeElement);
+            } else if (typeElement.toString().equals(MybatisEnumCodeHandler.class.getName())) {
+                generateEnumCodeHandler(roundEnv, typeElement);
             }
         }
 
@@ -39,8 +39,8 @@ public class EnumTypeAnnotationProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> supportedAnnotationTypes = new HashSet<>();
-        supportedAnnotationTypes.add(JpaEnumTypeConverter.class.getName());
-        supportedAnnotationTypes.add(MybatisEnumTypeHandler.class.getName());
+        supportedAnnotationTypes.add(JpaEnumCodeConverter.class.getName());
+        supportedAnnotationTypes.add(MybatisEnumCodeHandler.class.getName());
         return supportedAnnotationTypes;
     }
 
@@ -49,43 +49,43 @@ public class EnumTypeAnnotationProcessor extends AbstractProcessor {
         return SourceVersion.RELEASE_8;
     }
 
-    private void generateEnumTypeConverter(RoundEnvironment roundEnv, TypeElement typeElement) {
+    private void generateEnumCodeConverter(RoundEnvironment roundEnv, TypeElement typeElement) {
 
         for (Element element : roundEnv.getElementsAnnotatedWith(typeElement)) {
 
             Name className = element.getSimpleName();
 
             String source = "package " + element.getEnclosingElement() + ";\r\n"
-                    + "import io.github.cyzest.commons.spring.dao.EnumTypeConverter;\r\n"
-                    + "import javax.persistence.Converter;\r\n"
-                    + "@Converter(autoApply = true)\r\n"
-                    + "public class " + className + "EnumTypeConverter extends EnumTypeConverter<" + className + "> {\r\n"
-                    + "public " + className + "EnumTypeConverter() {\r\n"
-                    + "super(" + className + ".class);\r\n"
-                    + "}\r\n"
-                    + "}\r\n";
+                + "import io.github.cyzest.commons.spring.dao.EnumCodeConverter;\r\n"
+                + "import javax.persistence.Converter;\r\n"
+                + "@Converter(autoApply = true)\r\n"
+                + "public class " + className + "EnumCodeConverter extends EnumCodeConverter<" + className + "> {\r\n"
+                + "public " + className + "EnumCodeConverter() {\r\n"
+                + "super(" + className + ".class);\r\n"
+                + "}\r\n"
+                + "}\r\n";
 
-            createSourceFile(element + "EnumTypeConverter", source);
+            createSourceFile(element + "EnumCodeConverter", source);
         }
     }
 
-    private void generateEnumTypeHandler(RoundEnvironment roundEnv, TypeElement typeElement) {
+    private void generateEnumCodeHandler(RoundEnvironment roundEnv, TypeElement typeElement) {
 
         for (Element element : roundEnv.getElementsAnnotatedWith(typeElement)) {
 
             Name className = element.getSimpleName();
 
             String source = "package " + element.getEnclosingElement() + ";\r\n"
-                    + "import io.github.cyzest.commons.spring.dao.EnumTypeHandler;\r\n"
-                    + "import org.apache.ibatis.type.MappedTypes;\r\n"
-                    + "@MappedTypes(" + className + ".class)\r\n"
-                    + "public class " + className + "EnumTypeHandler extends EnumTypeHandler<" + className + "> {\r\n"
-                    + "public " + className + "EnumTypeHandler() {\r\n"
-                    + "super(" + className + ".class);\r\n"
-                    + "}\r\n"
-                    + "}\r\n";
+                + "import io.github.cyzest.commons.spring.dao.EnumCodeHandler;\r\n"
+                + "import org.apache.ibatis.type.MappedTypes;\r\n"
+                + "@MappedTypes(" + className + ".class)\r\n"
+                + "public class " + className + "EnumCodeHandler extends EnumCodeHandler<" + className + "> {\r\n"
+                + "public " + className + "EnumCodeHandler() {\r\n"
+                + "super(" + className + ".class);\r\n"
+                + "}\r\n"
+                + "}\r\n";
 
-            createSourceFile(element + "EnumTypeHandler", source);
+            createSourceFile(element + "EnumCodeHandler", source);
         }
     }
 

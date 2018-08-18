@@ -1,7 +1,7 @@
 package io.github.cyzest.commons.spring.web;
 
 import io.github.cyzest.commons.spring.model.BasedException;
-import io.github.cyzest.commons.spring.model.ExceptionTypeable;
+import io.github.cyzest.commons.spring.model.ExceptionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -133,7 +133,7 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug("BasedException Handling : {}", ex.getMessage());
 
-        ExceptionTypeable exceptionType = ex.getExceptionType();
+        ExceptionType exceptionType = ex.getExceptionType();
 
         ApiResponse apiResponse = new ApiResponse(exceptionType.getResultCode(), exceptionType.getResultMessage());
 

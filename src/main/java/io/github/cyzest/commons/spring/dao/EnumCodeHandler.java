@@ -1,6 +1,6 @@
 package io.github.cyzest.commons.spring.dao;
 
-import io.github.cyzest.commons.spring.model.EnumTypeable;
+import io.github.cyzest.commons.spring.model.EnumCode;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -10,13 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * MyBatis EnumType Handler
+ * MyBatis EnumCode Handler
  */
-public abstract class EnumTypeHandler<T extends Enum<T> & EnumTypeable> implements TypeHandler<T> {
+public abstract class EnumCodeHandler<T extends Enum<T> & EnumCode> implements TypeHandler<T> {
 
     private final Class<T> targetClass;
 
-    public EnumTypeHandler(Class<T> targetClass) {
+    public EnumCodeHandler(Class<T> targetClass) {
         if (targetClass == null) {
             throw new IllegalArgumentException();
         }
@@ -25,7 +25,7 @@ public abstract class EnumTypeHandler<T extends Enum<T> & EnumTypeable> implemen
 
     @Override
     public void setParameter(PreparedStatement ps, int i, T parameter, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, parameter.getType());
+        ps.setString(i, parameter.getCode());
     }
 
     @Override
@@ -46,18 +46,18 @@ public abstract class EnumTypeHandler<T extends Enum<T> & EnumTypeable> implemen
         return getEnumTypeByResult(result);
     }
 
-    private T getEnumTypeByResult(String result) throws SQLException {
-        T enumType = null;
+    private T getEnumTypeByResult(String result) {
+        T enumCode = null;
         if (result != null && !result.isEmpty()) {
             T[] constants = targetClass.getEnumConstants();
             for (T constant : constants) {
-                if (constant.getType().equals(result)) {
-                    enumType = constant;
+                if (constant.getCode().equals(result)) {
+                    enumCode = constant;
                     break;
                 }
             }
         }
-        return enumType;
+        return enumCode;
     }
 
 }

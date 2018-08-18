@@ -7,7 +7,7 @@ import org.apache.ibatis.type.MappedTypes;
  * MyBatis BooleanFlag Handler
  */
 @MappedTypes(BooleanFlag.class)
-public class BooleanHandler extends EnumTypeHandler<BooleanFlag> {
+public class BooleanHandler extends EnumCodeHandler<BooleanFlag> {
 
     public BooleanHandler() {
         super(BooleanFlag.class);

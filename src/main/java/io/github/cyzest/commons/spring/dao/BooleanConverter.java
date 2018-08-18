@@ -8,7 +8,7 @@ import javax.persistence.Converter;
  * JPA BooleanFlag Converter
  */
 @Converter(autoApply = true)
-public class BooleanConverter extends EnumTypeConverter<BooleanFlag> {
+public class BooleanConverter extends EnumCodeConverter<BooleanFlag> {
 
     public BooleanConverter() {
         super(BooleanFlag.class);

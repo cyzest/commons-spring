@@ -1,9 +1,7 @@
 package io.github.cyzest.commons.spring.web;
 
 /**
- *
  * 파라미터 필드 에러 정보
- *
  */
 public class FieldErrorInfo {
 

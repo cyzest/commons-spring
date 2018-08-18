@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 파일 타입 Validator
+ */
 public class FileTypeConstraintValidator implements ConstraintValidator<FileTypeValidator, MultipartFile> {
 
     private FileTypeValidator fileTypeValidator;

@@ -5,9 +5,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * 
  * MyBatis DAO 추상 클래스
- *
  */
 public abstract class MyBatisDao {
 

@@ -7,11 +7,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * JpaEnumTypeConverter
+ * Mybatis EnumCode Handler
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface JpaEnumTypeConverter {
+public @interface MybatisEnumCodeHandler {
 
 }

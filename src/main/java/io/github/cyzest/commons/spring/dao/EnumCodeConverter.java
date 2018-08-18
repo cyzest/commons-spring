@@ -1,17 +1,17 @@
 package io.github.cyzest.commons.spring.dao;
 
-import io.github.cyzest.commons.spring.model.EnumTypeable;
+import io.github.cyzest.commons.spring.model.EnumCode;
 
 import javax.persistence.AttributeConverter;
 
 /**
- * JPA EnumType Converter
+ * JPA EnumCode Converter
  */
-public abstract class EnumTypeConverter<T extends Enum<T> & EnumTypeable> implements AttributeConverter<T, String> {
+public abstract class EnumCodeConverter<T extends Enum<T> & EnumCode> implements AttributeConverter<T, String> {
 
     private final Class<T> targetClass;
 
-    public EnumTypeConverter(Class<T> targetClass) {
+    public EnumCodeConverter(Class<T> targetClass) {
         if (targetClass == null) {
             throw new IllegalArgumentException();
         }
@@ -20,7 +20,7 @@ public abstract class EnumTypeConverter<T extends Enum<T> & EnumTypeable> implem
 
     @Override
     public String convertToDatabaseColumn(T attribute) {
-        return attribute != null ? attribute.getType() : null;
+        return attribute != null ? attribute.getCode() : null;
     }
 
     @Override
@@ -29,7 +29,7 @@ public abstract class EnumTypeConverter<T extends Enum<T> & EnumTypeable> implem
         if (result != null && !result.isEmpty()) {
             T[] constants = targetClass.getEnumConstants();
             for (T constant : constants) {
-                if (constant.getType().equals(result)) {
+                if (constant.getCode().equals(result)) {
                     enumType = constant;
                     break;
                 }
