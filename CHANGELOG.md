@@ -10,6 +10,14 @@
 ### Changed
 - EnumTypeable 인터페이스 명칭 수정 (EnumTypeable -> EnumCode)
 - ExceptionTypeable 인터페이스 명칭 수정 (ExceptionTypeable -> ExceptionType)
+- EnumCode, ExceptionType 명칭 수정에 따른 코드 리펙토링
+- EnumTypeConverter → EnumCodeConverter 명칭 변경
+- EnumTypeHandler → EnumCodeHandler 명칭 변경
+- EnumTypeAnnotationProcessor → EnumCodeAnnotationProcessor 명칭 변경
+- JpaEnumTypeConverter → JpaEnumCodeConverter 명칭 변경
+- MybatisEnumTypeHandler → MybatisEnumCodeHandler 명칭 변경
+- EnumTypePropertyEditor → EnumCodePropertyEditor 명칭 변경
+
 
 ### Removed
 - no removed.
