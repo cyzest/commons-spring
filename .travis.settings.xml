@@ -1,0 +1,13 @@
+<settings>
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <gpg.keyname>${env.GPG_KEY}</gpg.keyname>
+                <gpg.passphrase>${env.GPG_PASS}</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
+</settings>
