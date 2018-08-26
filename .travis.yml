@@ -9,10 +9,6 @@ branches:
   only:
   - master
 
-env:
-  - GPG_KEY="$GPG_KEY"
-  - GPG_PASS="$GPG_PASS"
-
 cache:
   directories:
   - '$HOME/.m2/repository'
