@@ -5,8 +5,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <gpg.keyname>${env.GPG_KEY}</gpg.keyname>
-                <gpg.passphrase>${env.GPG_PASS}</gpg.passphrase>
+                <gpg.keyname>${GPG_KEY}</gpg.keyname>
+                <gpg.passphrase>${GPG_PASS}</gpg.passphrase>
             </properties>
         </profile>
     </profiles>

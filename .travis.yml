@@ -14,4 +14,4 @@ cache:
   - '$HOME/.m2/repository'
 
 script:
-- "mvn clean compile test"
+- "mvn clean compile"
