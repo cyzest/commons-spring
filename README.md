@@ -1,5 +1,6 @@
 # Spring Based Common Library
 
+[![Build Status](https://travis-ci.org/cyzest/commons-spring.svg?branch=master)](https://travis-ci.org/cyzest/commons-spring)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.cyzest/commons-spring/badge.svg)](https://mvnrepository.com/artifact/io.github.cyzest/commons-spring)
 
 스프링 기반 백엔드 개발의 편의성을 위해서 자주 사용하는 모듈들을 라이브러리화 하였다.
