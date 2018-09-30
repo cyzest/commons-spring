@@ -1,5 +1,8 @@
 package io.github.cyzest.commons.spring.web;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.util.Assert;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,9 +14,20 @@ public class ApiResponse {
 
     private Object extra;
 
+    public ApiResponse() {
+        this.code = HttpStatus.OK.value();
+        this.message = HttpStatus.OK.getReasonPhrase();
+    }
+
     public ApiResponse(int code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public ApiResponse(HttpStatus httpStatus) {
+        Assert.notNull(httpStatus, "httpStatus must not be null");
+        this.code = httpStatus.value();
+        this.message = httpStatus.getReasonPhrase();
     }
 
     @Override

@@ -39,7 +39,7 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug("ParamFieldValidException Handling : {}", ex.getMessage());
 
-        ApiResponse apiResponse = createBadRequestApiResponse();
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST);
 
         setInvalidGlobal(apiResponse, ex.getGlobalError());
         setInvalidFieldList(apiResponse, ex.getFieldErrors());
@@ -54,7 +54,7 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug("MethodArgumentNotValidException Handling : {}", ex.getMessage());
 
-        ApiResponse apiResponse = createBadRequestApiResponse();
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST);
 
         setInvalidGlobal(apiResponse, ex.getBindingResult().getGlobalError());
         setInvalidFieldList(apiResponse, ex.getBindingResult().getFieldErrors());
@@ -69,9 +69,10 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug("MethodArgumentTypeMismatchException Handling : {}", ex.getMessage());
 
-        ApiResponse apiResponse = createBadRequestApiResponse();
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST);
 
-        String requiredType = ClassUtils.getShortName(ex.getRequiredType());
+        String requiredType = Optional.ofNullable(ex.getRequiredType())
+                .map(ClassUtils::getShortName).orElse("undefined");
 
         String message = "Failed to convert value of required type [" + requiredType + "]";
 
@@ -101,7 +102,7 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug("ConstraintViolationException Handling : {}", messages);
 
-        ApiResponse apiResponse = createBadRequestApiResponse();
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST);
 
         apiResponse.putExtra("invalidMessages", messages);
 
@@ -120,7 +121,7 @@ public abstract class AbstractApiExceptionHandler {
 
         log.debug(ex.getClass().getSimpleName() + " Handling : {}", ex.getMessage());
 
-        ApiResponse apiResponse = createBadRequestApiResponse();
+        ApiResponse apiResponse = new ApiResponse(HttpStatus.BAD_REQUEST);
 
         apiResponse.setExtra(ex.getMessage());
 
@@ -147,17 +148,13 @@ public abstract class AbstractApiExceptionHandler {
     }
 
     @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable.class)
-    public ResponseEntity<ApiResponse> errorExceptionHandler(Throwable ex) {
+    public ApiResponse errorExceptionHandler(Throwable ex) {
 
         log.error("Exception Handling...", ex);
 
-        ApiResponse apiResponse = new ApiResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()
-        );
-
-        return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private void setInvalidGlobal(ApiResponse apiResponse, ObjectError objectError) {
@@ -185,10 +182,6 @@ public abstract class AbstractApiExceptionHandler {
 
             apiResponse.putExtra("invalidMessages", invalidFiledList);
         }
-    }
-
-    private ApiResponse createBadRequestApiResponse() {
-        return new ApiResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase());
     }
 
 }
