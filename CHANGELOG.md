@@ -3,6 +3,17 @@
 라이브러리는 1.0.5버전 이상부터 실사용이 가능합니다.   
 변경사항의 작성 포멧은 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)를 따릅니다.
 
+## [1.0.7] - 2018-10-18
+### Added
+- no added.
+
+### Changed
+- ApiResponse 클래스 및 AbstractApiExceptionHandler 리팩토링
+- Apache Tika 보안취약점 관련 버전 업데이트 (1.18 -> 1.19.1)
+
+### Removed
+- no removed.
+
 ## [1.0.6] - 2018-08-18
 ### Added
 - no added.
@@ -17,7 +28,6 @@
 - JpaEnumTypeConverter → JpaEnumCodeConverter 명칭 변경
 - MybatisEnumTypeHandler → MybatisEnumCodeHandler 명칭 변경
 - EnumTypePropertyEditor → EnumCodePropertyEditor 명칭 변경
-
 
 ### Removed
 - no removed.
